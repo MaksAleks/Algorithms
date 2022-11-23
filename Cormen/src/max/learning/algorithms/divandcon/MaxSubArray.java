@@ -6,7 +6,27 @@ public class MaxSubArray {
         MaxSubArray maxSubArray = new MaxSubArray();
         int[] arr = {13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7};
         var res = maxSubArray.findMaxSubArray(arr, 0, arr.length);
-        System.out.println(res);
+        System.out.println("with divide and conquer:" + res);
+
+        System.out.println("with brute force: " + maxSubArray.findMaxSubArrayBruteforce(arr));
+    }
+
+    public Result findMaxSubArrayBruteforce(int[] arr) {
+        long maxSum = Long.MIN_VALUE;
+        int left = -1;
+        int right = -1;
+        for (int i = 0; i < arr.length; i++) {
+            long sum = arr[i];
+            for (int j = i + 1; j < arr.length; j++) {
+                sum += arr[j];
+                if (sum > maxSum) {
+                    maxSum = sum;
+                    left = i;
+                    right = j;
+                }
+            }
+        }
+        return new Result(left, right, maxSum);
     }
 
     public Result findMaxSubArray(int[] arr, int l, int h) {
