@@ -9,6 +9,29 @@ public class MaxSubArray {
         System.out.println("with divide and conquer:" + res);
 
         System.out.println("with brute force: " + maxSubArray.findMaxSubArrayBruteforce(arr));
+        System.out.println("linear: " + maxSubArray.findMaxSubArrayLinear(arr));
+    }
+
+    public Result findMaxSubArrayLinear(int[] arr) {
+        int left = 0;
+        int right = 0;
+        long maxSum = arr[left];
+        long sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+            if (sum < 0) {
+                left = i + 1;
+                right = left;
+                sum = 0;
+                continue;
+            }
+            if (maxSum < sum) {
+                maxSum = sum;
+                right = i;
+            }
+        }
+
+        return new Result(left, right, maxSum);
     }
 
     public Result findMaxSubArrayBruteforce(int[] arr) {
