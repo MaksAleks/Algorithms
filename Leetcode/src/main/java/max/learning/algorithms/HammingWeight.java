@@ -9,7 +9,6 @@ public class HammingWeight {
     public int hammingWeight(int n) {
         int cnt = 0;
         while (n != 0) {
-            System.out.println(Integer.toBinaryString(n));
             cnt += (n & 0x01);
             n = n >>> 1;
         }

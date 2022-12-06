@@ -2,6 +2,12 @@ package max.learning.algorithms;
 
 import java.util.Arrays;
 
+/**
+ * <a href="https://leetcode.com/problems/squares-of-a-sorted-array/"/>
+ *
+ * Given an integer array nums sorted in non-decreasing order,
+ * return an array of the squares of each number sorted in non-decreasing order.
+ */
 class SortedSquares {
     public int[] trivialSolution(int[] nums) {
         return Arrays.stream(nums)

@@ -1,0 +1,4 @@
+rootProject.name = "Algorithms"
+include 'Cormen'
+include 'Leetcode'
+include 'G4G'
