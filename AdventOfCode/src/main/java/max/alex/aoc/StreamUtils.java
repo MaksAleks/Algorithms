@@ -6,6 +6,8 @@ import java.util.*;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+import static max.alex.aoc.Utils.readLine;
+
 public class StreamUtils {
 
     public Stream<List<String>> batchedLines(BufferedReader reader, int groupSize) {
@@ -49,13 +51,5 @@ public class StreamUtils {
             cnt++;
         }
         return nextGroup;
-    }
-
-    private String readLine(BufferedReader reader) {
-        try {
-            return reader.readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
