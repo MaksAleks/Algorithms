@@ -1,12 +1,14 @@
 package max.alex.aoc.first;
 
-import java.io.*;
+import max.alex.aoc.Input;
+
+import java.io.IOException;
 
 public class MaxCaloriesCounter {
 
     public static void main(String[] args) {
-        String input = "first_in.txt";
-        String testInput = "test_in.txt";
+        String input = "first/input.txt";
+        String testInput = "first/test.txt";
 
         var counter = new MaxCaloriesCounter();
         System.out.println("----- Max Calories -----");
@@ -18,10 +20,15 @@ public class MaxCaloriesCounter {
         System.out.println("Result: " + counter.topThreeCalories(input));
     }
 
+    private Input input;
+
+    public MaxCaloriesCounter() {
+        this.input = new Input();
+    }
 
     int topThreeCalories(String in) {
         int[] topThree = new int[]{0, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE};
-        getInput(in).lines().forEach(l -> {
+        input.getInput(in).lines().forEach(l -> {
             if (l.isEmpty()) {
                 int i = 0;
                 while (i < 3 && topThree[i] > topThree[i + 1]) {
@@ -39,7 +46,7 @@ public class MaxCaloriesCounter {
     }
     int maxCalories(String in) {
         int max = Integer.MIN_VALUE;
-        try (var reader = getInput(in)) {
+        try (var reader = input.getInput(in)) {
             String line;
             int cur = 0;
             while ((line = reader.readLine()) != null) {
@@ -56,11 +63,4 @@ public class MaxCaloriesCounter {
         }
     }
 
-    private BufferedReader getInput(String in) {
-        return new BufferedReader(new InputStreamReader(getInputStream(in)));
-    }
-
-    private InputStream getInputStream(String in) {
-        return MaxCaloriesCounter.class.getClassLoader().getResourceAsStream(in);
-    }
 }
